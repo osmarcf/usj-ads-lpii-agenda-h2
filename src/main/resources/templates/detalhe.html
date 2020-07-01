@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do contato</title>
+</head>
+<body>
+    <h1 th:text="${contato.nome}"></h1>
+    <div th:each="telefone : ${contato.telefones}">
+        <h2 th:text="${telefone.tipo}"></h2>
+        <h2 th:text="${telefone.numero}"></h2>
+    </div>
+
+    <form th:action="@{/{id}/telefone(id=${contato.id})}" method="POST">
+        <input type="text" name="tipo" id="tipo" />
+        <input type="text" name="numero" id="numero" />
+        <input type="submit" value="Salvar" />
+    </form>
+</body>
+</html>
